@@ -1,0 +1,114 @@
+‎<!DOCTYPE html>
+‎<html>
+‎<head>
+‎  <title>Mydochii Video</title>
+‎  <style>
+‎    body {
+‎      margin: 0;
+‎      background-color: black;
+‎      overflow: hidden;
+‎    }
+‎    video {
+‎      width: 100%;
+‎      height: 100vh;
+‎      object-fit: cover;
+‎    }
+‎
+‎    .ads-box {
+‎      display: none;
+‎      position: absolute;
+‎      background: rgba(0, 0, 0, 0.8);
+‎      color: white;
+‎      padding: 15px 20px;
+‎      border-radius: 12px;
+‎      text-align: center;
+‎      font-size: 15px;
+‎      z-index: 999;
+‎      width: 230px;
+‎      box-shadow: 0 0 10px rgba(255,255,255,0.15);
+‎      animation: fadein 1s ease;
+‎    }
+‎
+‎    .ads-box a {
+‎      color: yellow;
+‎      text-decoration: none;
+‎      font-weight: bold;
+‎    }
+‎
+‎    .close-btn {
+‎      position: absolute;
+‎      top: 3px;
+‎      right: 6px;
+‎      color: rgba(255, 255, 255, 0.6);
+‎      font-weight: bold;
+‎      cursor: pointer;
+‎      font-size: 10px; /* kecil */
+‎      background: rgba(255,255,255,0.1);
+‎      border-radius: 50%;
+‎      padding: 2px 5px;
+‎      transition: 0.2s;
+‎    }
+‎
+‎    .close-btn:hover {
+‎      color: red;
+‎      background: rgba(255,255,255,0.3);
+‎    }
+‎
+‎    @keyframes fadein {
+‎      from { opacity: 0; transform: scale(0.8); }
+‎      to { opacity: 1; transform: scale(1); }
+‎    }
+‎
+‎    /* Tata letak rapi untuk HP */
+‎    @media (max-width: 768px) {
+‎      .ads-box {
+‎        width: 80%;
+‎        left: 10%;
+‎        font-size: 14px;
+‎      }
+‎    }
+‎  </style>
+‎</head>
+‎<body>
+‎  <video id="myVideo" controls autoplay>
+‎    <source src="https://cdn.slicedrive.com/jWEEG0YP1.mp4" type="video/mp4">
+‎  </video>
+‎
+‎  <!-- 3 iklan: atas, tengah, bawah -->
+‎  <div id="ads1" class="ads-box" style="top:20%; left:5%;">
+‎    <span class="close-btn" onclick="closeAd('ads1')">✖</span>
+‎    🔥 Promo Spesial! <br>
+‎    <a href="https://otieu.com/4/9962437" target="_blank">Kunjungi Sekarang</a>
+‎  </div>
+‎
+‎  <div id="ads2" class="ads-box" style="top:45%; right:5%;">
+‎    <span class="close-btn" onclick="closeAd('ads2')">✖</span>
+‎    💎 Penawaran Menarik! <br>
+‎    <a href="https://otieu.com/4/9962435" target="_blank">Klik di Sini</a>
+‎  </div>
+‎
+‎  <div id="ads3" class="ads-box" style="bottom:15%; left:50%; transform:translateX(-50%);">
+‎    <span class="close-btn" onclick="closeAd('ads3')">✖</span>
+‎    🎁 Bonus Spesial! <br>
+‎    <a href="https://otieu.com/4/9962439" target="_blank">Lihat Sekarang</a>
+‎  </div>
+‎
+‎  <script>
+‎    const video = document.getElementById("myVideo");
+‎
+‎    // Fungsi menutup iklan
+‎    function closeAd(id) {
+‎      document.getElementById(id).style.display = "none";
+‎    }
+‎
+‎    // Semua iklan muncul bersamaan setelah 15 detik
+‎    video.addEventListener("timeupdate", () => {
+‎      if (video.currentTime >= 15 && document.getElementById("ads1").style.display === "none") {
+‎        document.getElementById("ads1").style.display = "block";
+‎        document.getElementById("ads2").style.display = "block";
+‎        document.getElementById("ads3").style.display = "block";
+‎      }
+‎    });
+‎  </script>
+‎</body>
+‎</html>
